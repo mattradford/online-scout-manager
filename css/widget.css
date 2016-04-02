@@ -1,0 +1,23 @@
+.osm_comingup_title {
+	font-weight: bold;
+	font-size: 1.05em;
+	border-top: 1px dotted #DFD7E6;
+}
+.osm_comingup_description {	
+	margin-bottom: 8px;
+}
+.osm_comingup_date {
+	font-style: italic;
+}
+.osm_patrols th {
+	font-size: 1.15em;
+	border-bottom: 1px dotted #DFD7E6;
+	font-weight: bold;
+}
+.osm_patrols td {
+	font-size: 1.1em;
+	border-bottom: 1px dotted #DFD7E6;
+}
+.osm_patrols .points {
+	text-align: center;
+}
