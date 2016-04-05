@@ -1,11 +1,16 @@
 === ScoutSites ===
-Contributors: Online Youth Manager Ltd
+Contributors: Online Youth Manager Ltd, mattradford
 Tags: scouts, online scout manager
 Requires at least: 3.2
 Tested up to: 3.4.2
 Stable tag: 1.2
 
-Display information from your Online Scout Manager account on your WordPress site
+Display information from your Online Scout Manager account on your WordPress site.
+
+This is an unofficial fork of the plugin developed for OSM. It works up to 4.4.2, but as the original OSM plugin uses a deprecated PHP _construct(), it will error if WP_DEBUG is true.
+
+== To Do ==
+* Please see open issues for to-do tracking, but in short I aim to remove the deprecation and make the output better for responsive designs, as well as add in support for adult sections and OSM NZ.
 
 == Description ==
 
