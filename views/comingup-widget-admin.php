@@ -12,7 +12,7 @@
       </label>
       <select id="<?php echo $this->get_field_id('sectionid'); ?>" name="<?php echo $this->get_field_name('sectionid'); ?>">
       <?php 
-      $roles = get_option('OnlineScoutManager_activeRoles');
+      $roles = get_option('online_scout_manager_active_roles');
       foreach ($roles as $role) {
       		echo '<option value="'.$role['sectionid'].'"';
 			if ($instance['sectionid'] == $role['sectionid']) {

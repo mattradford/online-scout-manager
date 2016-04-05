@@ -1,6 +1,6 @@
 <aside class="widget">
 <?php
-getTerms();
+osm_get_terms();
 $patrols = get_cached_osm('patrols');
 function osm_patrol_sort($a, $b) {
     if ($a['points'] == $b['points']) {
@@ -10,7 +10,7 @@ function osm_patrol_sort($a, $b) {
 }
 $continue = true;
 if (!$patrols) {
-	$roles = get_option('OnlineScoutManager_activeRoles');
+	$roles = get_option('online_scout_manager_active_roles');
 	if (!is_array($roles)) {
 		$continue = false;
 		echo '<p>Online Scout Manager account has not been configured.</p>';

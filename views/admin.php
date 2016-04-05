@@ -25,7 +25,7 @@
 	<h3>Events</h3>
 	<p>You can display your future events (start date, title and notes) on a page.  In any page that you want this to appear, type [events sectionid=X] where X is your section identifier - see below.</p>
 	<?php
-	$roles = get_option('OnlineScoutManager_activeRoles');
+	$roles = get_option('online_scout_manager_active_roles');
 	$needToReFetch = false;
 	foreach ($roles as $role) {
 		if (!isset($role['section']) or strlen($role['section']) == 0) {
@@ -36,8 +36,8 @@
 	if ($needToReFetch) {
 		getRoles();
 		resyncDataToActiveRoles();
-		getTerms();
-		$roles = get_option('OnlineScoutManager_activeRoles');
+		osm_get_terms();
+		$roles = get_option('online_scout_manager_active_roles');
 	}
 	echo '<h2 style="font-size: 1.4em;">OSM Section Identifiers</h2>';
 	echo '<table><tr><th>Group</th><th>Section</th><th>Section ID</th></tr>';

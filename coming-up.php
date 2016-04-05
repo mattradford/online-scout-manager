@@ -4,7 +4,7 @@ class OSM_Whats_Next extends WP_Widget {
 	/*--------------------------------------------------*/
 	/* Constructor
 	/*--------------------------------------------------*/
-	
+
 	/**
 	 * The widget constructor. Specifies the classname and description, instantiates
 	 * the widget, loads localization files, and includes necessary scripts and
@@ -14,24 +14,24 @@ class OSM_Whats_Next extends WP_Widget {
 
 	    // Define constants used throughout the plugin
 	    $this->init_plugin_constants();
-  
+
 		$widget_opts = array (
-			'classname' => 'OSM_Whats_Next', 
+			'classname' => 'OSM_Whats_Next',
 			'description' => __('Shows your upcoming events and/or meetings', PLUGIN_LOCALE)
-		);	
-		
+		);
+
 		$this->WP_Widget('OSM_Whats_Next', __('OSM: Coming Up', PLUGIN_LOCALE), $widget_opts);
 		load_plugin_textdomain(PLUGIN_LOCALE, false, dirname(plugin_basename( __FILE__ ) ) . '/lang/' );
-		
+
 	    // Load JavaScript and stylesheets
 	    $this->register_scripts_and_styles();
-		
+
 	} // end constructor
 
 	/*--------------------------------------------------*/
 	/* API Functions
 	/*--------------------------------------------------*/
-	
+
 	/**
 	 * Outputs the content of the widget.
 	 *
@@ -42,9 +42,9 @@ class OSM_Whats_Next extends WP_Widget {
 		extract($args, EXTR_SKIP);
 		// Display the widget
 		include(WP_PLUGIN_DIR . '/' . PLUGIN_SLUG . '/views/comingup_widget_view.php');
-		
+
 	} // end widget
-	
+
 	/**
 	 * Processes the widget's options to be saved.
 	 *
@@ -58,18 +58,18 @@ class OSM_Whats_Next extends WP_Widget {
 	    $instance['sectionid'] = strip_tags(stripslashes($new_instance['sectionid']));
 	    $instance['type'] = strip_tags(stripslashes($new_instance['type']));
 	    $instance['numentries'] = strip_tags(stripslashes($new_instance['numentries']));
-    
+
 		return $instance;
-		
+
 	} // end widget
-	
+
 	/**
 	 * Generates the administration form for the widget.
 	 *
 	 * @instance	The array of keys and values for the widget.
 	 */
 	function form($instance) {
-	
+
 		$instance = wp_parse_args(
 			(array)$instance,
 			array(
@@ -81,15 +81,15 @@ class OSM_Whats_Next extends WP_Widget {
 		);
 		// Display the admin form
     	include(WP_PLUGIN_DIR . '/' . PLUGIN_SLUG . '/views/comingup_widget_admin.php');
-		
+
 	} // end form
-	
+
 	/*--------------------------------------------------*/
 	/* Private Functions
 	/*--------------------------------------------------*/
-	
+
   /**
-   * Initializes constants used for convenience throughout 
+   * Initializes constants used for convenience throughout
    * the plugin.
    */
   private function init_plugin_constants() {
@@ -103,11 +103,11 @@ class OSM_Whats_Next extends WP_Widget {
     } // end if
 
     if(!defined('PLUGIN_SLUG')) {
-      define('PLUGIN_SLUG', 'OnlineScoutManager');
+      define('PLUGIN_SLUG', 'online-scout-manager');
     } // end if
-  
+
   } // end init_plugin_constants
-  
+
 	/**
 	 * Registers and enqueues stylesheets for the administration panel and the
 	 * public facing site.
@@ -115,7 +115,7 @@ class OSM_Whats_Next extends WP_Widget {
 	private function register_scripts_and_styles() {
 		if(is_admin()) {
      		$this->load_file(PLUGIN_NAME, '/' . PLUGIN_SLUG . '/js/admin.js', true);
-		} else { 
+		} else {
 			$this->load_file(PLUGIN_NAME, '/' . PLUGIN_SLUG . '/css/widget.css');
 		} // end if/else
 	} // end register_scripts_and_styles
@@ -128,10 +128,10 @@ class OSM_Whats_Next extends WP_Widget {
 	 * @is_script		Optional argument for if the incoming file_path is a JavaScript source file.
 	 */
 	private function load_file($name, $file_path, $is_script = false) {
-		
+
     	$url = WP_PLUGIN_URL . $file_path;
 		$file = WP_PLUGIN_DIR . $file_path;
-    
+
 		if(file_exists($file)) {
 			if($is_script) {
 				wp_register_script($name, $url);
@@ -141,8 +141,8 @@ class OSM_Whats_Next extends WP_Widget {
 				wp_enqueue_style($name);
 			} // end if
 		} // end if
-    
+
 	} // end load_file
-	
+
 } // end class
 ?>

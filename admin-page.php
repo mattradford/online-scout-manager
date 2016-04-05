@@ -21,15 +21,15 @@ function getRoles() {
 	return $storeRoles;
 }
 function resyncDataToActiveRoles() {
-	$activeRoles = get_option('OnlineScoutManager_activeRoles');
+	$active_roles = get_option('online_scout_manager_active_roles');
 	$allRoles = get_option('OnlineScoutManager_allRoles');
-	foreach ($activeRoles as $sectionid => $role) {
-		$activeRoles[$sectionid]['section'] = $allRoles[$sectionid]['section'];
+	foreach ($active_roles as $sectionid => $role) {
+		$active_roles[$sectionid]['section'] = $allRoles[$sectionid]['section'];
 	}
-	update_option('OnlineScoutManager_activeRoles', $activeRoles);
+	update_option('online_scout_manager_active_roles', $active_roles);
 }
 function my_plugin_options() {
-	$OnlineScoutManager_options = array('OnlineScoutManager_userid','OnlineScoutManager_secret', 'OnlineScoutManager_allRoles', 'OnlineScoutManager_activeRoles'); 
+	$OnlineScoutManager_options = array('online_scout_manager_userid','online_scout_manager_secret', 'OnlineScoutManager_allRoles', 'online_scout_manager_active_roles'); 
 	$OnlineScoutManager_cache = array('OnlineScoutManager_programme', 'OnlineScoutManager_patrols');
 	if ( !current_user_can( 'manage_options' ) )  {
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
@@ -44,8 +44,8 @@ function my_plugin_options() {
 			if ($retVal['userid'] and $retVal['userid'] > 0) {
 				$userid = $retVal['userid'];
 				$secret = $retVal['secret'];
-				update_option('OnlineScoutManager_userid', $userid);
-				update_option('OnlineScoutManager_secret', $secret);
+				update_option('online_scout_manager_userid', $userid);
+				update_option('online_scout_manager_secret', $secret);
 				
 				$storeRoles = getRoles();
 				$mode = 'enableroles';
@@ -58,13 +58,13 @@ function my_plugin_options() {
 			$roles = $_POST['roles'];
 			if (count($roles) > 0) {
 				$storeRoles = get_option('OnlineScoutManager_allRoles');
-				$activeRoles = array();
+				$active_roles = array();
 				foreach ($roles as $sectionid => $null) {
-					$activeRoles[$sectionid] = $storeRoles[$sectionid];
+					$active_roles[$sectionid] = $storeRoles[$sectionid];
 				}
 				delete_option('OnlineScoutManager_allRoles');
-				update_option('OnlineScoutManager_activeRoles', $activeRoles);
-				getTerms();
+				update_option('online_scout_manager_active_roles', $active_roles);
+				osm_get_terms();
 			} else {
 				$storeRoles = get_option('OnlineScoutManager_allRoles');
 				$authoriseErrorMsg = 'You must select one or more sections to use.';
@@ -89,7 +89,7 @@ function my_plugin_options() {
 			}
 		}
 	}
-	$userid = get_option('OnlineScoutManager_userid');
+	$userid = get_option('online_scout_manager_userid');
 	if ($userid > 0) {
 		include(WP_PLUGIN_DIR . '/' . PLUGIN_SLUG . '/views/admin.php');
 	} else {

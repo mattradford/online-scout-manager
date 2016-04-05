@@ -1,7 +1,7 @@
 <?php
 function show_events($attrs){
-	getTerms();
-	$roles = get_option('OnlineScoutManager_activeRoles');
+	osm_get_terms();
+	$roles = get_option('online_scout_manager_active_roles');
 	$sectionid = $attrs['sectionid'];
 	
 	if (is_numeric($sectionid)) {

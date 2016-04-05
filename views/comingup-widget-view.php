@@ -1,10 +1,10 @@
 <aside class="widget">
 <?php
-getTerms();
+osm_get_terms();
 $continue = true;
 $programme = get_cached_osm('programme');
 if (!$programme) {
-	$roles = get_option('OnlineScoutManager_activeRoles');
+	$roles = get_option('online_scout_manager_active_roles');
 	if (!is_array($roles)) {
 		$continue = false;
 		echo '<p>Online Scout Manager account has not been configured.</p>';
