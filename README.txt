@@ -16,6 +16,8 @@ See open issues for to-do tracking, but in short I aim to remove the deprecation
 
 == Description ==
 
+To authorise this plugin you must go into OSM -> Account -> Settings -> External Access within OSM, and allowing the WP plugin access.
+
 Sidebar widgets:
 * Upcoming meetings/events
 * Patrol points
