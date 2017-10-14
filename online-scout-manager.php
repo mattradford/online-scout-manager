@@ -37,7 +37,7 @@ function osm_query( $url, $parts = null ) {
 
 	$data = '';
 	foreach ( $parts as $key => $val ) {
-		$data . = '&' . $key . '=' . urlencode( $val );
+		$data . '&' . $key . '=' . urlencode( $val );
 	}
 	$curl_handle = curl_init();
 	curl_setopt( $curl_handle, CURLOPT_URL, 'https://www.onlinescoutmanager.co.uk/' . $url );
